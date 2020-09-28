@@ -18,7 +18,7 @@ const login = require("./routes/login");
 const colaborador = require("./routes/colaborador");
 const transportista = require("./routes/transportista");
 const recorrido = require("./routes/recorrido");
-
+const sucursal = require("./routes/Sucursal");
 /* Routes */
 app.get("/", (req, res, next) => {
   res.send("api Sistema_Transporte");
@@ -28,6 +28,7 @@ app.use("/api/login", login);
 app.use("/api/colaborador", colaborador);
 app.use("/api/transportista", transportista);
 app.use("/api/recorrido", recorrido);
+app.use("/api/sucursal", sucursal);
 
 /* catch errors */
 app.use((req, res) => {
@@ -35,6 +36,6 @@ app.use((req, res) => {
   res.send("ruta desconocida");
 });
 
-app.listen(3000, () => {
-  console.log("Server on port 3000");
+app.listen(3001, () => {
+  console.log("Server on port 3001");
 });
