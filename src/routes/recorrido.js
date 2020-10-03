@@ -11,8 +11,7 @@ const db = require("../database/connection");
 router.post("/nuevo", (req, res) => {
   let result = Result.createResult();
   const { idSucursal, idColaborador, idTransportista } = req.body;
-  console.log(idSucursal, idColaborador, idTransportista);
-  const query = `CALL SP_REGISTRO_RECORRIDO(?, ?, ?, @Mensaje); SELECT @Mensaje as mensaje`;
+  const query = `CALL SP_REGISTRO_RECORRIDO(?, ?, ?, @Mensaje); SELECT @Mensaje as mensaje;`;
 
   db.query(query, [idSucursal, idColaborador, idTransportista], (err, resp) => {
     if (!err) {

@@ -12,7 +12,8 @@ const db = require("../database/connection");
 router.get("/lista", (req, res) => {
   let result = Result.createResult();
 
-  const query = "SELECT * FROM Colaborador;";
+  const query =
+    "SELECT id, nombre, usuario, direccion, estado FROM Colaborador;";
   db.query(query, (err, resp) => {
     if (!err) {
       result.Items = resp;

@@ -7,7 +7,8 @@ const db = require("../database/connection");
 router.get("/lista", (req, res) => {
   let result = Result.createResult();
 
-  const query = "SELECT * FROM transportista;";
+  const query =
+    "SELECT id, nombre, usuario, direccion, tarifa, estado, id_sucursal FROM transportista;";
   db.query(query, (err, resp) => {
     if (!err) {
       result.Items = resp;
@@ -36,7 +37,7 @@ router.post("/reporte", (req, res) => {
 
   db.query(
     query,
-    [idTransportista, `${fechaInicial} 01:00:00`, `${fechaFinal} 23:00:00`],
+    [idTransportista, `${fechaInicial} 05:00:00`, `${fechaFinal} 22:00:00`],
     (err, resp) => {
       if (!err) {
         if (resp.length != 0) {

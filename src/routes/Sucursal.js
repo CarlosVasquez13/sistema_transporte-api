@@ -14,7 +14,6 @@ Agregar un colaborador a una sucursal
 router.post("/colaborador_sucursal", (req, res) => {
   let result = Result.createResult();
   const { idSucursal, idUsuario, distancia } = req.body;
-  console.log(idSucursal, idUsuario, distancia);
   const query = `CALL SP_AGREGAR_COLABORADOR_SUCURSAL(?, ?, ?, ?, @Mensaje); SELECT @Mensaje as mensaje`;
   db.query(
     query,
@@ -76,7 +75,6 @@ router.get("/colaboradores/:idSucursal", (req, res) => {
   INNER JOIN Sucursal_Colaborador ON Sucursal_Colaborador.id_colaborador = Colaborador.id AND Sucursal_Colaborador.id_sucursal = ?;`;
 
   db.query(query, [idSucursal], (err, resp) => {
-    console.log(resp);
     if (!err) {
       result.Items = resp;
       result.Response = "Lista de colaboradores de la sucursal.";
